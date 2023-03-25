@@ -2,9 +2,11 @@ package com.lais.harrypotter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.lais.harrypotter.data.CallBackListHarryPotter
 import com.lais.harrypotter.data.HarryPotterRepository
 import com.lais.harrypotter.data.HarryPotterService
 import com.lais.harrypotter.data.RetrofitAPI
+import com.lais.harrypotter.data.response.HarryPotterCharactersResponse
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +15,15 @@ class MainActivity : AppCompatActivity() {
         val retrofit = RetrofitAPI.getRetrofit()
         val service = retrofit.create(HarryPotterService::class.java)
         val repository = HarryPotterRepository(service)
-        repository.getAllCharacters()
+        repository.getAllCharacters(object : CallBackListHarryPotter {
+            override fun onSuccess(list: List<HarryPotterCharactersResponse>) {
+                println(list)
+            }
+
+            override fun onError(error: Throwable) {
+                error.printStackTrace()
+            }
+
+        })
     }
 }
