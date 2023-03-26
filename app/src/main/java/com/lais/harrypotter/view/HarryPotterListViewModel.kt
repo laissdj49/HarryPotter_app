@@ -6,18 +6,20 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.lais.harrypotter.data.HarryPotterRepository
 import com.lais.harrypotter.data.HarryPotterService
 import com.lais.harrypotter.data.RetrofitAPI
-import com.lais.harrypotter.data.response.HarryPotterCharactersResponse
+import com.lais.harrypotter.domain.HarryPotterListDomain
+import com.lais.harrypotter.domain.HarryPotterPresentation
 import kotlinx.coroutines.launch
 
 class HarryPotterListViewModel(private val repository: HarryPotterRepository): ViewModel() {
 
-    private val _listCharacters: MutableLiveData<List<HarryPotterCharactersResponse>> = MutableLiveData()
-    val listCharacters : LiveData<List<HarryPotterCharactersResponse>> = _listCharacters
+    private val _listCharacters: MutableLiveData<List<HarryPotterPresentation>> = MutableLiveData()
+    val listCharacters : LiveData<List<HarryPotterPresentation>> = _listCharacters
 
     fun listCharacters(){
         viewModelScope.launch {
            val result = repository.getCharacters()
-            _listCharacters.value = result
+           val domain = HarryPotterListDomain()
+            _listCharacters.value = domain.mapToPresentation(result)
         }
     }
 
