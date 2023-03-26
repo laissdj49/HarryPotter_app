@@ -1,5 +1,7 @@
 package com.lais.harrypotter.domain
 
+import androidx.annotation.DrawableRes
+import com.lais.harrypotter.R
 import com.lais.harrypotter.data.response.HarryPotterCharactersResponse
 
 class HarryPotterListDomain {
@@ -8,7 +10,7 @@ class HarryPotterListDomain {
         characters: List<HarryPotterCharactersResponse>
     ): List<HarryPotterPresentation> {
         return characters
-            .filter { item -> item.hogwartsStudent }
+            .filter { item -> item.image.isNotEmpty() }
             .map { item ->
                 HarryPotterPresentation(
                     name = item.name,
@@ -45,11 +47,11 @@ data class HarryPotterPresentation(
     val ancestry: Ancestry
 )
 
-enum class House {
-    Gryffindor,
-    Slytherin,
-    Hufflepuff,
-    Ravenclaw,
+enum class House(@DrawableRes val icon: Int?=null) {
+    Gryffindor(icon = R.drawable.gryffindor),
+    Slytherin(icon = R.drawable.slytherin),
+    Hufflepuff(icon = R.drawable.hufflepuff),
+    Ravenclaw(icon = R.drawable.ravenclaw),
     Unknown,
 }
 

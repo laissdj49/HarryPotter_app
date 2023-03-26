@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Harry Potter</string>
+    <string name="name_student">Name Student</string>
 </resources>
