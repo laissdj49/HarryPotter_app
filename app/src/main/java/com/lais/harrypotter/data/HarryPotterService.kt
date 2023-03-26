@@ -13,4 +13,7 @@ interface HarryPotterService {
     @GET("characters")
     fun listCharacters(): Call<List<HarryPotterCharactersResponse>>
 
+    @GET("characters")
+    suspend fun getCharacters(): List<HarryPotterCharactersResponse>
+
 }

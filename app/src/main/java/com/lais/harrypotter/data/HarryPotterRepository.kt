@@ -33,6 +33,11 @@ class HarryPotterRepository(private val service: HarryPotterService) {
         })
     }
 
+    suspend fun getCharacters(): List<HarryPotterCharactersResponse>{
+
+        return service.getCharacters()
+    }
+
 }
 interface CallBackListHarryPotter{
 
