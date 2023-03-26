@@ -1,22 +1,10 @@
-package com.lais.harrypotter
+package com.lais.harrypotter.characters.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.lais.harrypotter.data.CallBackListHarryPotter
-import com.lais.harrypotter.data.HarryPotterRepository
-import com.lais.harrypotter.data.HarryPotterService
-import com.lais.harrypotter.data.RetrofitAPI
-import com.lais.harrypotter.data.response.HarryPotterCharactersResponse
 import com.lais.harrypotter.databinding.ActivityMainBinding
-import com.lais.harrypotter.view.HarryPotterAdapter
-import com.lais.harrypotter.view.HarryPotterListViewModel
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 

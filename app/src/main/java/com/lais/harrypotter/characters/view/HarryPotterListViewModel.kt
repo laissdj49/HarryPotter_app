@@ -1,13 +1,12 @@
-package com.lais.harrypotter.view
+package com.lais.harrypotter.characters.view
 
 import androidx.lifecycle.*
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.lais.harrypotter.data.HarryPotterRepository
-import com.lais.harrypotter.data.HarryPotterService
-import com.lais.harrypotter.data.RetrofitAPI
-import com.lais.harrypotter.domain.HarryPotterListDomain
-import com.lais.harrypotter.domain.HarryPotterPresentation
+import com.lais.harrypotter.characters.data.HarryPotterRepository
+import com.lais.harrypotter.characters.data.HarryPotterService
+import com.lais.harrypotter.utils.RetrofitAPI
+import com.lais.harrypotter.characters.domain.HarryPotterListDomain
+import com.lais.harrypotter.characters.domain.HarryPotterPresentation
 import kotlinx.coroutines.launch
 
 class HarryPotterListViewModel(private val repository: HarryPotterRepository): ViewModel() {

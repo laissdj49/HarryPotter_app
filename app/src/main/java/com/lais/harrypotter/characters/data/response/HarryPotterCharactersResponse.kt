@@ -1,4 +1,4 @@
-package com.lais.harrypotter.data.response
+package com.lais.harrypotter.characters.data.response
 
 data class HarryPotterCharactersResponse(
     val id: String,

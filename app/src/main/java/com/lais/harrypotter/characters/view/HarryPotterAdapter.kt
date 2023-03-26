@@ -1,4 +1,4 @@
-package com.lais.harrypotter.view
+package com.lais.harrypotter.characters.view
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.lais.harrypotter.R
-import com.lais.harrypotter.domain.HarryPotterPresentation
-import com.lais.harrypotter.domain.House
+import com.lais.harrypotter.characters.domain.HarryPotterPresentation
+import com.lais.harrypotter.characters.domain.House
 
 /**
  * O adapter pega as informações do meu layout e adapta para a recyclerView criar a lista

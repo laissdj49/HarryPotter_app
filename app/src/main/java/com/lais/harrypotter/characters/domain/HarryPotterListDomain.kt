@@ -1,8 +1,8 @@
-package com.lais.harrypotter.domain
+package com.lais.harrypotter.characters.domain
 
 import androidx.annotation.DrawableRes
 import com.lais.harrypotter.R
-import com.lais.harrypotter.data.response.HarryPotterCharactersResponse
+import com.lais.harrypotter.characters.data.response.HarryPotterCharactersResponse
 
 class HarryPotterListDomain {
 

@@ -1,4 +1,4 @@
-package com.lais.harrypotter.data
+package com.lais.harrypotter.utils
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

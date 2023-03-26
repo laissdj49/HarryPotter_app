@@ -1,7 +1,6 @@
-package com.lais.harrypotter.data
+package com.lais.harrypotter.characters.data
 
-import androidx.lifecycle.LiveData
-import com.lais.harrypotter.data.response.HarryPotterCharactersResponse
+import com.lais.harrypotter.characters.data.response.HarryPotterCharactersResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,14 +14,14 @@ import retrofit2.Response
 class HarryPotterRepository(private val service: HarryPotterService) {
 
     fun getAllCharacters(callBackListHarryPotter: CallBackListHarryPotter) {
-        service.listCharacters().enqueue(object : Callback<List<HarryPotterCharactersResponse>>{
+        service.listCharacters().enqueue(object : Callback<List<HarryPotterCharactersResponse>> {
             override fun onResponse(
                 call: Call<List<HarryPotterCharactersResponse>>,
                 response: Response<List<HarryPotterCharactersResponse>>
             ) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     callBackListHarryPotter.onSuccess(response.body().orEmpty())
-                }else{
+                } else {
                     callBackListHarryPotter.onSuccess(emptyList())
                 }
             }
@@ -33,13 +32,14 @@ class HarryPotterRepository(private val service: HarryPotterService) {
         })
     }
 
-    suspend fun getCharacters(): List<HarryPotterCharactersResponse>{
+    suspend fun getCharacters(): List<HarryPotterCharactersResponse> {
 
         return service.getCharacters()
     }
 
 }
-interface CallBackListHarryPotter{
+
+interface CallBackListHarryPotter {
 
     fun onSuccess(list: List<HarryPotterCharactersResponse>)
     fun onError(error: Throwable)
