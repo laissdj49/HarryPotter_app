@@ -19,3 +19,4 @@ Projeto utilizando API do [Harry Potter](https://hp-api.onrender.com/) com o obj
 - Identificacão da casa do personagem
 
 ## Layout
+<img src="https://user-images.githubusercontent.com/106832437/227802290-92e3e70d-467d-4582-97b9-e53d006672c8.png" width="400">
