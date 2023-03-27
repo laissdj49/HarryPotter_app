@@ -3,4 +3,5 @@
     <string name="name_student">Name Student</string>
     <string name="spell">spell</string>
     <string name="description">Description</string>
+    <string name="spells">Spells</string>
 </resources>

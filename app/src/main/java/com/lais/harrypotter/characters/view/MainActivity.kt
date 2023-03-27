@@ -1,10 +1,12 @@
 package com.lais.harrypotter.characters.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.lais.harrypotter.databinding.ActivityMainBinding
+import com.lais.harrypotter.spells.view.SpellsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.listCharacters.observe(this){
             val harryPotterAdapter = HarryPotterAdapter(it)
             binding.list.adapter = harryPotterAdapter
+
+            binding.buttonSpell.setOnClickListener{
+                startActivity(Intent(this,SpellsActivity::class.java))
+            }
         }
         viewModel.listCharacters()
 
