@@ -4,4 +4,6 @@
     <string name="spell">spell</string>
     <string name="description">Description</string>
     <string name="spells">Spells</string>
+    <string name="name_staff">Name staff</string>
+    <string name="ancestry">Ancestry</string>
 </resources>

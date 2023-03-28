@@ -9,7 +9,7 @@ import com.lais.harrypotter.characters.domain.mapToHouse
 import com.lais.harrypotter.staff.data.response.StaffResponse
 
 class StaffListDomain {
-    fun mapToPresentation(staff: List<StaffResponse>): List<Unit> {
+    fun mapToPresentation(staff: List<StaffResponse>): List<StaffPresentation> {
         return staff
             .filter { item -> item.image.isNotEmpty() }
             .map { item ->

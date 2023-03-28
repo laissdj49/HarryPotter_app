@@ -1,8 +1,15 @@
 package com.lais.harrypotter.staff.view
 
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
+import com.lais.harrypotter.R
 import com.lais.harrypotter.staff.domain.StaffPresentation
 
 class StaffAdapter (
@@ -10,19 +17,45 @@ private  val list: List<StaffPresentation>
 ): RecyclerView.Adapter<StaffAdapter.ViewHolder>(){
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        val nameStaff: TextView
+        val imageStaff: ImageView
+
+        init {
+            nameStaff = view.findViewById(R.id.name_staff)
+            imageStaff = view.findViewById(R.id.image_staff)
+        }
 
     }
+
+    /**
+     * Diz qual layout eu devo utilizar na minha lista e infla(cria) o layout escolhido
+     */
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_staff_list, parent, false)
+        return ViewHolder(view)
     }
+
+    /**
+     * Nos fornece o layout inflado associado a uma posicao da lista
+     * similar ao onCriate, aqui podemos interagir com o layout e colocar nossas informacoes
+     */
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val staff = list[position]
+        holder.nameStaff.text = staff.name
+        holder.imageStaff.load(staff.imageUrl){
+            transformations(CircleCropTransformation())
+        }
     }
 
+    /**
+     * Diz para a RecyclerView quantos itens teremos em nossa lista
+     */
+
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return list.size
     }
 
 }
