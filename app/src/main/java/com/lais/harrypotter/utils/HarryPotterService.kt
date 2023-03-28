@@ -24,10 +24,7 @@ interface HarryPotterService {
     @GET("spells")
     suspend fun getSpells(): List<SpellsResponse>
 
-    @GET("staff")
-    suspend fun listStaff(): Call<List<StaffResponse>>
-
-    @GET("staff")
+    @GET("characters/staff")
     suspend fun getStaff(): List<StaffResponse>
 
 }

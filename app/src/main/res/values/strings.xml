@@ -6,4 +6,5 @@
     <string name="spells">Spells</string>
     <string name="name_staff">Name staff</string>
     <string name="ancestry">Ancestry</string>
+    <string name="button_staff">staff</string>
 </resources>

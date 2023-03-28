@@ -19,10 +19,12 @@ private  val list: List<StaffPresentation>
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val nameStaff: TextView
         val imageStaff: ImageView
+        val ancestry: TextView
 
         init {
             nameStaff = view.findViewById(R.id.name_staff)
             imageStaff = view.findViewById(R.id.image_staff)
+            ancestry = view.findViewById(R.id.ancestry)
         }
 
     }
@@ -45,9 +47,8 @@ private  val list: List<StaffPresentation>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val staff = list[position]
         holder.nameStaff.text = staff.name
-        holder.imageStaff.load(staff.imageUrl){
-            transformations(CircleCropTransformation())
-        }
+        holder.imageStaff.load(staff.imageUrl)
+        holder.ancestry.text = staff.ancestry.toString()
     }
 
     /**

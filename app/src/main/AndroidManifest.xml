@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HarryPotter"
         tools:targetApi="31">
+
         <activity
-            android:name=".StaffActivity"
+            android:name=".staff.view.StaffActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

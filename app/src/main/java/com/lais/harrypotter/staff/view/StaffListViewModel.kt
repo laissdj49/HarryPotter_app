@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class StaffListViewModel(private  val repository: StaffRepository): ViewModel(){
 
     private val _listStaff: MutableLiveData<List<StaffPresentation>> = MutableLiveData()
-    private  val liststaff: LiveData<List<StaffPresentation>> = _listStaff
+    val liststaff: LiveData<List<StaffPresentation>> = _listStaff
 
     fun listStaff(){
         viewModelScope.launch {

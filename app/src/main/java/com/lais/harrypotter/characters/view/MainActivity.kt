@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.lais.harrypotter.databinding.ActivityMainBinding
 import com.lais.harrypotter.spells.view.SpellsActivity
+import com.lais.harrypotter.staff.view.StaffActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
             binding.buttonSpell.setOnClickListener{
                 startActivity(Intent(this,SpellsActivity::class.java))
+            }
+            binding.buttonStaff.setOnClickListener{
+                startActivity(Intent(this,StaffActivity::class.java))
             }
         }
         viewModel.listCharacters()
