@@ -1,6 +1,6 @@
 package com.lais.harrypotter.spells.data
 
-import com.lais.harrypotter.characters.data.HarryPotterService
+import com.lais.harrypotter.utils.HarryPotterService
 import com.lais.harrypotter.spells.data.response.SpellsResponse
 import retrofit2.Call
 import retrofit2.Callback

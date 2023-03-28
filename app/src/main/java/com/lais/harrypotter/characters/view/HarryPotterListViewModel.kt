@@ -3,7 +3,7 @@ package com.lais.harrypotter.characters.view
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.lais.harrypotter.characters.data.HarryPotterRepository
-import com.lais.harrypotter.characters.data.HarryPotterService
+import com.lais.harrypotter.utils.HarryPotterService
 import com.lais.harrypotter.utils.RetrofitAPI
 import com.lais.harrypotter.characters.domain.HarryPotterListDomain
 import com.lais.harrypotter.characters.domain.HarryPotterPresentation

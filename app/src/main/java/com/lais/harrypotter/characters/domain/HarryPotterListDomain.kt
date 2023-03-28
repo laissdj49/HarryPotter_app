@@ -20,25 +20,26 @@ class HarryPotterListDomain {
                 )
             }
     }
+}
 
-    private fun mapToHouse(house: String): House {
-        return when (house) {
-            "Gryffindor" -> House.Gryffindor
-            "Slytherin" -> House.Slytherin
-            "Hufflepuff" -> House.Hufflepuff
-            "Ravenclaw" -> House.Ravenclaw
-            else -> House.Unknown
-        }
-    }
-
-    private fun mapToAncestry(ancestry: String): Ancestry {
-        return when (ancestry) {
-            "half-blood" -> Ancestry.HalfBlood
-            "pure-blood" -> Ancestry.PureBlood
-            else -> Ancestry.Muggleborn
-        }
+fun mapToHouse(house: String): House {
+    return when (house) {
+        "Gryffindor" -> House.Gryffindor
+        "Slytherin" -> House.Slytherin
+        "Hufflepuff" -> House.Hufflepuff
+        "Ravenclaw" -> House.Ravenclaw
+        else -> House.Unknown
     }
 }
+
+fun mapToAncestry(ancestry: String): Ancestry {
+    return when (ancestry) {
+        "half-blood" -> Ancestry.HalfBlood
+        "pure-blood" -> Ancestry.PureBlood
+        else -> Ancestry.Muggleborn
+    }
+}
+
 
 data class HarryPotterPresentation(
     val name: String,
@@ -47,7 +48,7 @@ data class HarryPotterPresentation(
     val ancestry: Ancestry
 )
 
-enum class House(@DrawableRes val icon: Int?=null) {
+enum class House(@DrawableRes val icon: Int? = null) {
     Gryffindor(icon = R.drawable.gryffindor),
     Slytherin(icon = R.drawable.slytherin),
     Hufflepuff(icon = R.drawable.hufflepuff),

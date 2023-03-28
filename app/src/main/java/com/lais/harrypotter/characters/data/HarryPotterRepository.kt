@@ -1,6 +1,7 @@
 package com.lais.harrypotter.characters.data
 
 import com.lais.harrypotter.characters.data.response.HarryPotterCharactersResponse
+import com.lais.harrypotter.utils.HarryPotterService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
