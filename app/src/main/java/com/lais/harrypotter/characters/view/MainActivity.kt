@@ -19,21 +19,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.list.layoutManager = GridLayoutManager(this, 3)
-        viewModel.listCharacters.observe(this){
+        viewModel.listCharacters.observe(this) {
             val harryPotterAdapter = HarryPotterAdapter(it)
             binding.list.adapter = harryPotterAdapter
 
-            binding.buttonSpell.setOnClickListener{
-                startActivity(Intent(this,SpellsActivity::class.java))
-            }
-            binding.buttonStaff.setOnClickListener{
-                startActivity(Intent(this,StaffActivity::class.java))
-            }
         }
         viewModel.listCharacters()
-
-
-
+        binding.buttonSpell.setOnClickListener {
+            startActivity(Intent(this, SpellsActivity::class.java))
+        }
+        binding.buttonStaff.setOnClickListener {
+            startActivity(Intent(this, StaffActivity::class.java))
+        }
 
 
 

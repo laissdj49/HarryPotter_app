@@ -7,17 +7,18 @@ import com.lais.harrypotter.utils.HarryPotterService
 import com.lais.harrypotter.utils.RetrofitAPI
 import com.lais.harrypotter.characters.domain.HarryPotterListDomain
 import com.lais.harrypotter.characters.domain.HarryPotterPresentation
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class HarryPotterListViewModel(private val repository: HarryPotterRepository): ViewModel() {
+class HarryPotterListViewModel(private val repository: HarryPotterRepository) : ViewModel() {
 
     private val _listCharacters: MutableLiveData<List<HarryPotterPresentation>> = MutableLiveData()
-    val listCharacters : LiveData<List<HarryPotterPresentation>> = _listCharacters
+    val listCharacters: LiveData<List<HarryPotterPresentation>> = _listCharacters
 
-    fun listCharacters(){
+    fun listCharacters() {
         viewModelScope.launch {
-           val result = repository.getCharacters()
-           val domain = HarryPotterListDomain()
+            val result = repository.getCharacters()
+            val domain = HarryPotterListDomain()
             _listCharacters.value = domain.mapToPresentation(result)
         }
     }
