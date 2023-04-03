@@ -1,6 +1,5 @@
 package com.lais.harrypotter.characters.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +11,21 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.lais.harrypotter.R
 import com.lais.harrypotter.characters.domain.HarryPotterPresentation
-import com.lais.harrypotter.characters.domain.House
 
 /**
  * O adapter pega as informações do meu layout e adapta para a recyclerView criar a lista
  */
 
 class HarryPotterAdapter(
-    private val list: List<HarryPotterPresentation>
+    private val list: List<HarryPotterPresentation>,
+    private val onClick: (HarryPotterPresentation) -> Unit,
 ) : RecyclerView.Adapter<HarryPotterAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameStudent: TextView
         val imageStudent: ImageView
         val houseImage: ImageView
+
         init {
             nameStudent = view.findViewById(R.id.name_student)
             imageStudent = view.findViewById(R.id.image_student)
@@ -51,12 +51,15 @@ class HarryPotterAdapter(
         val character = list[position]
         holder.nameStudent.text = character.name
 
-        if (character.house.icon != null){
+        if (character.house.icon != null) {
             val icon = ContextCompat.getDrawable(holder.itemView.context, character.house.icon)
             holder.houseImage.setImageDrawable(icon)
         }
-        holder.imageStudent.load(character.imageUrl){
+        holder.imageStudent.load(character.imageUrl) {
             transformations(CircleCropTransformation())
+        }
+        holder.itemView.setOnClickListener {
+            onClick.invoke(character)
         }
     }
 

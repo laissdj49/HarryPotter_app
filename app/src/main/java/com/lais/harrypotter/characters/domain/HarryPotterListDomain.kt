@@ -16,7 +16,9 @@ class HarryPotterListDomain {
                     name = item.name,
                     imageUrl = item.image,
                     house = mapToHouse(item.house),
-                    ancestry = mapToAncestry(item.ancestry)
+                    ancestry = mapToAncestry(item.ancestry),
+                    yearOfBirth = item.yearOfBirth,
+                    patronus = item.patronus
                 )
             }
     }
@@ -45,7 +47,9 @@ data class HarryPotterPresentation(
     val name: String,
     val imageUrl: String,
     val house: House,
-    val ancestry: Ancestry
+    val ancestry: Ancestry,
+    val yearOfBirth: Int,
+    val patronus: String
 )
 
 enum class House(@DrawableRes val icon: Int? = null) {
