@@ -3,6 +3,7 @@ package com.lais.harrypotter.characters.domain
 import androidx.annotation.DrawableRes
 import com.lais.harrypotter.R
 import com.lais.harrypotter.characters.data.response.HarryPotterCharactersResponse
+import com.lais.harrypotter.characters.data.response.WandResponse
 
 class HarryPotterListDomain {
 
@@ -18,7 +19,8 @@ class HarryPotterListDomain {
                     house = mapToHouse(item.house),
                     ancestry = mapToAncestry(item.ancestry),
                     yearOfBirth = item.yearOfBirth,
-                    patronus = item.patronus
+                    patronus = item.patronus,
+                    wand = item.wand
                 )
             }
     }
@@ -42,6 +44,11 @@ fun mapToAncestry(ancestry: String): Ancestry {
     }
 }
 
+//fun mapToWand(wood: String, core: String,length: Double ):WandResponse {
+  // return WandResponse(wood, core, length)
+//}
+
+
 
 data class HarryPotterPresentation(
     val name: String,
@@ -49,7 +56,8 @@ data class HarryPotterPresentation(
     val house: House,
     val ancestry: Ancestry,
     val yearOfBirth: Int,
-    val patronus: String
+    val patronus: String,
+    val wand: WandResponse
 )
 
 enum class House(@DrawableRes val icon: Int? = null) {
