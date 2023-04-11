@@ -44,11 +44,6 @@ fun mapToAncestry(ancestry: String): Ancestry {
     }
 }
 
-//fun mapToWand(wood: String, core: String,length: Double ):WandResponse {
-  // return WandResponse(wood, core, length)
-//}
-
-
 
 data class HarryPotterPresentation(
     val name: String,

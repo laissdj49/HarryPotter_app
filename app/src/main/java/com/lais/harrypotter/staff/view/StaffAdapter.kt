@@ -1,6 +1,5 @@
 package com.lais.harrypotter.staff.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,15 +7,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.lais.harrypotter.R
 import com.lais.harrypotter.staff.domain.StaffPresentation
 
-class StaffAdapter (
-private  val list: List<StaffPresentation>
-): RecyclerView.Adapter<StaffAdapter.ViewHolder>(){
+class StaffAdapter(
+    private val list: List<StaffPresentation>,
+    val onClick: (StaffPresentation) -> Unit,
+) : RecyclerView.Adapter<StaffAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameStaff: TextView
         val imageStaff: ImageView
         val ancestry: TextView
@@ -49,6 +48,9 @@ private  val list: List<StaffPresentation>
         holder.nameStaff.text = staff.name
         holder.imageStaff.load(staff.imageUrl)
         holder.ancestry.text = staff.ancestry.toString()
+        holder.itemView.setOnClickListener {
+            onClick.invoke(staff)
+        }
     }
 
     /**
