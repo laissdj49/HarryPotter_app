@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.lais.harrypotter'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.lais.harrypotter"
         minSdk 25
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -23,6 +23,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -35,8 +44,6 @@ android {
     }
 }
 
-
-
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -47,11 +54,29 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.6'
     implementation 'io.coil-kt:coil:2.3.0'
     //  request libraries
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.google.android.material:compose-theme-adapter:1.1.16"
+
+
+    //compose dependencies
+    implementation "com.google.accompanist:accompanist-appcompat-theme:0.28.0"
+    def composeBom = platform('androidx.compose:compose-bom:2023.08.00')
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    implementation 'androidx.compose.material3:material3'
+    // or Material Design 2
+    implementation 'androidx.compose.material:material'
+    // or skip Material Design and build directly on top of foundational components
+    implementation 'androidx.compose.foundation:foundation'
+    // or only import the main APIs for the underlying toolkit systems,
+    // such as input and measurement/layout
+    implementation 'androidx.compose.ui:ui'
+
 }
