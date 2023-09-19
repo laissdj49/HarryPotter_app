@@ -3,12 +3,24 @@ package com.lais.harrypotter.characters.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import coil.transform.CircleCropTransformation
+import coil.compose.AsyncImage
 import com.lais.harrypotter.R
 import com.lais.harrypotter.characters.domain.HarryPotterPresentation
 
@@ -22,14 +34,10 @@ class HarryPotterAdapter(
 ) : RecyclerView.Adapter<HarryPotterAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameStudent: TextView
-        val imageStudent: ImageView
-        val houseImage: ImageView
+        val composeView: ComposeView
 
         init {
-            nameStudent = view.findViewById(R.id.name_student)
-            imageStudent = view.findViewById(R.id.image_student)
-            houseImage = view.findViewById(R.id.image_house)
+            composeView = view.findViewById(R.id.compose)
         }
     }
 
@@ -49,6 +57,12 @@ class HarryPotterAdapter(
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = list[position]
+        holder.composeView.setContent {
+            Characters(
+                character = character,
+                onClick = { onClick(character) })
+        }
+        /*
         holder.nameStudent.text = character.name
 
         if (character.house.icon != null) {
@@ -61,6 +75,7 @@ class HarryPotterAdapter(
         holder.itemView.setOnClickListener {
             onClick.invoke(character)
         }
+    }*/
     }
 
     /**
@@ -68,5 +83,42 @@ class HarryPotterAdapter(
      */
     override fun getItemCount(): Int {
         return list.size
+    }
+}
+
+@Composable
+fun Characters(
+    character: HarryPotterPresentation,
+    onClick: () -> Unit
+) {
+    Column(
+        modifier = Modifier.clickable(onClick = onClick),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Box {
+            AsyncImage(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .size(80.dp)
+                    .clip(CircleShape),
+                model = character.imageUrl,
+                contentDescription = null,
+            )
+            if (character.house.icon != null) {
+                Image(
+                    modifier = Modifier
+                        .padding(start = 24.dp, bottom = 16.dp)
+                        .size(20.dp)
+                        .align(Alignment.BottomStart),
+                    painter = painterResource(id = character.house.icon),
+                    contentDescription = ""
+                )
+            }
+        }
+        Text(
+            modifier = Modifier.padding(bottom = 16.dp, start = 8.dp, end = 8.dp),
+            text = character.name,
+            textAlign = TextAlign.Center
+        )
     }
 }
