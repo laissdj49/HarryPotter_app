@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,20 +63,6 @@ class HarryPotterAdapter(
                 character = character,
                 onClick = { onClick(character) })
         }
-        /*
-        holder.nameStudent.text = character.name
-
-        if (character.house.icon != null) {
-            val icon = ContextCompat.getDrawable(holder.itemView.context, character.house.icon)
-            holder.houseImage.setImageDrawable(icon)
-        }
-        holder.imageStudent.load(character.imageUrl) {
-            transformations(CircleCropTransformation())
-        }
-        holder.itemView.setOnClickListener {
-            onClick.invoke(character)
-        }
-    }*/
     }
 
     /**
@@ -85,7 +72,6 @@ class HarryPotterAdapter(
         return list.size
     }
 }
-
 @Composable
 fun Characters(
     character: HarryPotterPresentation,
@@ -118,6 +104,7 @@ fun Characters(
         Text(
             modifier = Modifier.padding(bottom = 16.dp, start = 8.dp, end = 8.dp),
             text = character.name,
+            color = colorResource(id = R.color.white ),
             textAlign = TextAlign.Center
         )
     }

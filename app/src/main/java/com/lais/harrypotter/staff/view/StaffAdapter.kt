@@ -3,10 +3,24 @@ package com.lais.harrypotter.staff.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import coil.compose.AsyncImage
 import com.lais.harrypotter.R
 import com.lais.harrypotter.staff.domain.StaffPresentation
 
@@ -16,16 +30,11 @@ class StaffAdapter(
 ) : RecyclerView.Adapter<StaffAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameStaff: TextView
-        val imageStaff: ImageView
-        val ancestry: TextView
+        val composeView: ComposeView
 
         init {
-            nameStaff = view.findViewById(R.id.name_staff)
-            imageStaff = view.findViewById(R.id.image_staff)
-            ancestry = view.findViewById(R.id.ancestry)
+            composeView = view.findViewById(R.id.compose)
         }
-
     }
 
     /**
@@ -45,11 +54,11 @@ class StaffAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val staff = list[position]
-        holder.nameStaff.text = staff.name
-        holder.imageStaff.load(staff.imageUrl)
-        holder.ancestry.text = staff.ancestry.toString()
-        holder.itemView.setOnClickListener {
-            onClick.invoke(staff)
+        holder.composeView.setContent {
+            Staff(
+                staff = staff,
+                onClick = { onClick(staff) })
+
         }
     }
 
@@ -60,6 +69,38 @@ class StaffAdapter(
     override fun getItemCount(): Int {
         return list.size
     }
-
 }
+
+@Composable
+fun Staff(
+    staff: StaffPresentation,
+    onClick: () -> Unit
+) {
+
+    Box {
+
+        AsyncImage(
+            modifier = Modifier
+                .clickable(onClick = onClick)
+                .fillMaxSize(),
+            model = staff.imageUrl,
+            contentDescription = null,
+            contentScale = ContentScale.FillHeight
+        )
+
+        Text(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(start = 8.dp, end = 8.dp, bottom = 16.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(color = Color.White)
+                .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 2.dp),
+            text = staff.name,
+            color = Color.Black,
+            textAlign = TextAlign.Center
+        )
+
+    }
+}
+
 
