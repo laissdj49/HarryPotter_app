@@ -7,35 +7,12 @@
     android:paddingVertical="8dp"
     android:layout_margin="4dp"
     >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:layout_height="match_parent"/>
 
 
-        <TextView
-            android:id="@+id/name_spell"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/spell"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="left"
-            android:text="@string/description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_spell" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
