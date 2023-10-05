@@ -10,7 +10,7 @@
     <string name="name">name</string>
     <string name="year_of_birth">yearOfBirth</string>
     <string name="string_yearofbirth">@string/yearofbirth</string>
-    <string name="house">house</string>
+    <string name="house">House</string>
     <string name="year_ofbirth">"Year Of Birth"</string>
     <string name="patronus">patronus</string>
     <string name="ancestryy">"Ancestry"</string>

@@ -1,118 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/image_staff"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="8dp"
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/bottom_sheet_staff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
-        android:id="@+id/text_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
-        app:layout_constraintTop_toBottomOf="@id/image_staff"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/text_string_ancestry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ancestryy"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_name"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/text_ancestry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ancestry"
-        android:textStyle="italic"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_string_ancestry"
-        app:layout_constraintStart_toStartOf="parent" />
-    <TextView
-        android:id="@+id/text_string_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/yearofbirth"
-        android:textSize="16sp"
-        android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@id/text_ancestry"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/text_yearbirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/year_of_birth"
-        android:textStyle="italic"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_string_year"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/text_string_house"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/houses"
-        android:layout_marginTop="6dp"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_yearbirth"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/text_house"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/house"
-        android:textStyle="italic"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_string_house" />
-    <TextView
-        android:id="@+id/text_string_patronus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_patronus"
-        android:textSize="16sp"
-        android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@id/text_house"
-        app:layout_constraintStart_toStartOf="parent" />
-    <TextView
-        android:id="@+id/text_patronus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/patronus"
-        android:textStyle="italic"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_string_patronus"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/text_string_wand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wand"
-        android:textSize="16sp"
-        android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@id/text_patronus"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/text_wand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wand"
-        android:textStyle="italic"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_string_wand"
-        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
