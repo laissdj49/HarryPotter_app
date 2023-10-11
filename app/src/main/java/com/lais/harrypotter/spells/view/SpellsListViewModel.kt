@@ -2,21 +2,21 @@ package com.lais.harrypotter.spells.view
 
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.lais.harrypotter.utils.HarryPotterService
 import com.lais.harrypotter.spells.data.SpellsRepository
 import com.lais.harrypotter.spells.data.response.SpellsResponse
+import com.lais.harrypotter.utils.HarryPotterService
 import com.lais.harrypotter.utils.RetrofitAPI
 import kotlinx.coroutines.launch
 
-class SpellsListViewModel (private val repository: SpellsRepository): ViewModel(){
+class SpellsListViewModel(private val repository: SpellsRepository) : ViewModel() {
 
-    private val _listSpells: MutableLiveData<List<SpellsResponse>> = MutableLiveData()
+    private val _listSpells = MutableLiveData<List<SpellsResponse>>()
     val listSpells: LiveData<List<SpellsResponse>> = _listSpells
 
-    fun listSpells(){
+    fun listSpells() {
         viewModelScope.launch {
             val result = repository.getSpell()
-            _listSpells.value = result
+            _listSpells.postValue(result)
         }
     }
 

@@ -18,4 +18,5 @@
     <string name="houses">"House"</string>
     <string name="string_patronus">"Patronus"</string>
     <string name="wand">Wand</string>
+    <string name="title_activity_main2">MainActivity2</string>
 </resources>

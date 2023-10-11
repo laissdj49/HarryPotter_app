@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,7 +64,7 @@ fun StaffDetailsCompose(staff: StaffPresentation) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         AsyncImage(
-            modifier = Modifier.clip(shape = CircleShape),
+            modifier = Modifier.clip(shape = CircleShape).size(250.dp),
             model = staff.imageUrl,
             contentDescription = null
         )
@@ -111,33 +112,34 @@ fun StaffDetailsCompose(staff: StaffPresentation) {
                 text = staff.house.name,
                 color = colorResource(id = R.color.white)
             )
+            if (staff.wand.core.isNotEmpty()) {
+                Text(
+                    text = stringResource(id = R.string.string_patronus),
+                    style = TextStyle(fontWeight = FontWeight.Bold),
+                    color = colorResource(id = R.color.white)
+                )
 
-            Text(
-                text = stringResource(id = R.string.string_patronus),
-                style = TextStyle(fontWeight = FontWeight.Bold),
-                color = colorResource(id = R.color.white)
-            )
+                Text(
+                    modifier = Modifier.padding(2.dp),
+                    text = staff.patronus,
+                    color = colorResource(id = R.color.white)
 
-            Text(
-                modifier = Modifier.padding(2.dp),
-                text = staff.patronus,
-                color = colorResource(id = R.color.white)
+                )
+            }
+            if (staff.wand.core.isNotEmpty()) {
+                Text(
+                    text = stringResource(id = R.string.wand),
+                    style = TextStyle(fontWeight = FontWeight.Bold),
+                    color = colorResource(id = R.color.white)
+                )
 
-            )
+                Text(
+                    modifier = Modifier.padding(2.dp),
+                    text = staff.wand.core,
+                    color = colorResource(id = R.color.white)
+                )
 
-            Text(
-                text = stringResource(id = R.string.wand),
-                style = TextStyle(fontWeight = FontWeight.Bold),
-                color = colorResource(id = R.color.white)
-            )
-
-            Text(
-                modifier = Modifier.padding(2.dp),
-                text = staff.wand.core,
-                color = colorResource(id = R.color.white)
-            )
-
-
+            }
         }
     }
 }

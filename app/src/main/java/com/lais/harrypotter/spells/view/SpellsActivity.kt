@@ -1,27 +1,27 @@
 package com.lais.harrypotter.spells.view
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.lais.harrypotter.R
-import com.lais.harrypotter.databinding.ActivitySpellsBinding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 
-class SpellsActivity : AppCompatActivity() {
+class SpellsActivity : ComponentActivity() {
 
-    private lateinit var binding: ActivitySpellsBinding
-    private val viewModel: SpellsListViewModel by viewModels {SpellsListViewModel.Factory }
+    private val viewModel: SpellsListViewModel by viewModels { SpellsListViewModel.Factory }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivitySpellsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.list.layoutManager = LinearLayoutManager(this)
-        viewModel.listSpells.observe(this){
-          val adapter = SpellsAdapter(it)
-            binding.list.adapter = adapter
+        setContent {
+            viewModel.listSpells()
+            val spells by viewModel.listSpells.observeAsState(initial = emptyList())
+            LazyColumn {
+                items(spells) { spell ->
+                    Spell(spell = spell)
+                }
+            }
         }
-        viewModel.listSpells()
     }
 }
