@@ -1,29 +1,44 @@
 package com.lais.harrypotter.staff.view
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import com.lais.harrypotter.databinding.ActivityStaffBinding
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.unit.dp
 import com.lais.harrypotter.staff.domain.StaffPresentation
 
 class StaffActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityStaffBinding
+
     private val viewModel: StaffListViewModel by viewModels { StaffListViewModel.Factory }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContent {
+            viewModel.listStaff()
+            val staffs by viewModel.liststaff.observeAsState(initial = emptyList())
 
-        binding = ActivityStaffBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.list.layoutManager = GridLayoutManager(this, 3)
-        viewModel.liststaff.observe(this) {
-            val staffAdapter = StaffAdapter(
-                list = it,
-                onClick = ::showDetail
-            )
-            binding.list.adapter = staffAdapter
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(count = 3),
+                contentPadding = PaddingValues(20.dp, 20.dp),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+
+                ) {
+                items(staffs) { staff ->
+                    Staff(staff = staff) {
+                        showDetail(staff)
+                    }
+                }
+
+            }
+
         }
-        viewModel.listStaff()
     }
 
     private fun showDetail(item: StaffPresentation) {
