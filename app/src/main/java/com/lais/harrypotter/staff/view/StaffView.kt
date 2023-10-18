@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,37 +28,42 @@ fun Staff(
     staff: StaffPresentation,
     onClick: () -> Unit
 ) {
-
-    Box(
+    Card(
         modifier = Modifier
             .padding(4.dp)
-            .height(150.dp)
-            .fillMaxWidth()
+            .size(150.dp),
+        shape = RoundedCornerShape(8.dp),
+        backgroundColor = Color(0xFF2B2A2A)
     ) {
-
-        AsyncImage(
+        Box(
             modifier = Modifier
-                .clickable(onClick = onClick)
-                .fillMaxSize(),
-            model = staff.imageUrl,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
+                .height(150.dp)
+                .fillMaxWidth()
+        ) {
 
-        Text(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(start = 6.dp, end = 6.dp, bottom = 4.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(color = Color.White)
-                .padding(start = 2.dp, end = 2.dp, top = 2.dp, bottom = 2.dp),
-            text = staff.name,
-            color = Color.Black,
-            textAlign = TextAlign.Center,
-            maxLines = 2
-        )
+            AsyncImage(
+                modifier = Modifier
+                    .clickable(onClick = onClick)
+                    .fillMaxSize(),
+                model = staff.imageUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
 
+            Text(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(start = 6.dp, end = 6.dp, bottom = 4.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(color = Color.White)
+                    .padding(start = 2.dp, end = 2.dp, top = 2.dp, bottom = 2.dp),
+                text = staff.name,
+                color = Color.Black,
+                textAlign = TextAlign.Center,
+                maxLines = 2
+            )
+
+        }
     }
 }
-
 
