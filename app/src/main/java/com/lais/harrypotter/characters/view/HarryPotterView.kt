@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -15,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.lais.harrypotter.R
 import com.lais.harrypotter.characters.domain.HarryPotterPresentation
+import com.lais.harrypotter.utils.ColorApp
 
 @Composable
 fun Characters(
@@ -34,7 +35,7 @@ fun Characters(
             .padding(4.dp)
             .size(150.dp),
         shape = RoundedCornerShape(8.dp),
-        backgroundColor = Color(0xFF2B2A2A)
+        backgroundColor = ColorApp.backgroundGray
 
     ) {
         Column(
@@ -82,4 +83,5 @@ fun Characters(
             )
         }
     }
+    Spacer(modifier = Modifier.size(50.dp))
 }

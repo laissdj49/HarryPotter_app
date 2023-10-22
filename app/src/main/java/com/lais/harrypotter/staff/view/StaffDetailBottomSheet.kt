@@ -5,9 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +28,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lais.harrypotter.R
 import com.lais.harrypotter.databinding.DetailStaffBottomSheetBinding
 import com.lais.harrypotter.staff.domain.StaffPresentation
+import com.lais.harrypotter.utils.ColorApp
 
 class StaffDetailBottomSheet(
     val staff: StaffPresentation
@@ -44,7 +50,7 @@ class StaffDetailBottomSheet(
         super.onViewCreated(view, savedInstanceState)
 
         binding.bottomSheetStaff.setContent {
-            StaffDetailsCompose(staff = staff)
+            StaffDetails(staff = staff)
         }
     }
 
@@ -53,18 +59,21 @@ class StaffDetailBottomSheet(
         _binding = null
 
     }
-
-    companion object {
-        const val TAG = "HarryPotterDetailBottomSheet"
-    }
 }
 
 @Composable
-fun StaffDetailsCompose(staff: StaffPresentation) {
+fun StaffDetails(staff: StaffPresentation) {
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         AsyncImage(
-            modifier = Modifier.clip(shape = CircleShape).size(250.dp),
+            modifier = Modifier
+                .clip(shape = CircleShape)
+                .size(250.dp),
             model = staff.imageUrl,
             contentDescription = null
         )
@@ -94,7 +103,6 @@ fun StaffDetailsCompose(staff: StaffPresentation) {
                 style = TextStyle(fontWeight = FontWeight.Bold),
                 color = colorResource(id = R.color.white)
             )
-            //Box(modifier = Modifier.size(20.dp).clip(CircleShape).background(Color.Black))
             Text(
                 modifier = Modifier.padding(2.dp),
                 text = staff.yearOfBirth.toString(),
@@ -141,6 +149,23 @@ fun StaffDetailsCompose(staff: StaffPresentation) {
 
             }
         }
+        Spacer(modifier = Modifier.size(50.dp))
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun StaffDetailBottomSheetCompose(
+    staff: StaffPresentation,
+    state: SheetState,
+    onDismiss: () -> Unit
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = state,
+        containerColor = ColorApp.backgroundGray
+    ) {
+        StaffDetails(staff = staff)
     }
 }
 
