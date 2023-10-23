@@ -1,9 +1,5 @@
 package com.lais.harrypotter.staff.view
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,42 +20,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lais.harrypotter.R
-import com.lais.harrypotter.databinding.DetailStaffBottomSheetBinding
 import com.lais.harrypotter.staff.domain.StaffPresentation
 import com.lais.harrypotter.utils.ColorApp
-
-class StaffDetailBottomSheet(
-    val staff: StaffPresentation
-) : BottomSheetDialogFragment() {
-    private var _binding: DetailStaffBottomSheetBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-
-        ): View {
-        _binding = DetailStaffBottomSheetBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.bottomSheetStaff.setContent {
-            StaffDetails(staff = staff)
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-
-    }
-}
 
 @Composable
 fun StaffDetails(staff: StaffPresentation) {
@@ -73,7 +36,7 @@ fun StaffDetails(staff: StaffPresentation) {
         AsyncImage(
             modifier = Modifier
                 .clip(shape = CircleShape)
-                .size(250.dp),
+                .size(200.dp),
             model = staff.imageUrl,
             contentDescription = null
         )
@@ -120,13 +83,12 @@ fun StaffDetails(staff: StaffPresentation) {
                 text = staff.house.name,
                 color = colorResource(id = R.color.white)
             )
-            if (staff.wand.core.isNotEmpty()) {
+            if (staff.patronus.isNotEmpty()) {
                 Text(
                     text = stringResource(id = R.string.string_patronus),
                     style = TextStyle(fontWeight = FontWeight.Bold),
                     color = colorResource(id = R.color.white)
                 )
-
                 Text(
                     modifier = Modifier.padding(2.dp),
                     text = staff.patronus,
