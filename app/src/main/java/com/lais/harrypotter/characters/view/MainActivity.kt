@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.lais.harrypotter.R
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 val character by viewModel.listCharacters.observeAsState(initial = emptyList())
                 Column(
                     modifier = Modifier
-                        .padding(2.dp),
+                        .background(Color.Black),
                     horizontalAlignment = Alignment.End
                 ) {
                     val onClickSpell = {
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this@MainActivity, StaffActivity::class.java))
                     }
                     ActionIcons(
-                        modifier = Modifier.padding(bottom = 8.dp),
+                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, end = 4.dp),
                         onClickSpell = onClickSpell,
                         onClickStaff = onClickStaff
                     )
@@ -104,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         onClickStaff: () -> Unit,
     ) {
         Row(
-            modifier = modifier.padding(bottom = 8.dp),
+            modifier = modifier.padding(top = 8.dp, bottom = 8.dp, end = 4.dp),
             horizontalArrangement = Arrangement.End
         ) {
             Image(
